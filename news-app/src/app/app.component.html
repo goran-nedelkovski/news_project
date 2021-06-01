@@ -1,0 +1,6 @@
+<ul *ngIf="articles">
+  <li *ngFor="let article of articles">
+    <!--with json pipe | I will transform the object into json string to can see what I have inside the obj-->
+    <p>{{article | json}}</p>
+  </li>
+</ul>
