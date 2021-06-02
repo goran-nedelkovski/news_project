@@ -1,6 +1,27 @@
-<ul *ngIf="articles">
-  <li *ngFor="let article of articles">
+
+<ul *ngIf="topHeadlines">
+  <h3>Top Headlines</h3>
+  <li *ngFor="let topHeadline of topHeadlines">
     <!--with json pipe | I will transform the object into json string to can see what I have inside the obj-->
-    <p>{{article | json}}</p>
+    <p>{{topHeadline | json}}</p>
   </li>
 </ul>
+<ul *ngIf="sources">
+  <h3>Sources</h3>
+  <li *ngFor="let source of sources">
+    <!--with json pipe | I will transform the object into json string to can see what I have inside the obj-->
+    <p>{{source | json}}</p>
+  </li>
+</ul>
+<ul *ngIf="articles">
+  <h3>Everything</h3>
+  <li *ngFor="let article of articles; let i = index;">
+    <!--with json pipe | I will transform the object into json string to can see what I have inside the obj-->
+    <p *ngIf="i + 1 === articles.length" #theLastArticle>{{article | json}}</p>
+    <p *ngIf="i + 1 != articles.length">{{article | json}}</p>
+  </li>
+</ul>
+
+
+
+

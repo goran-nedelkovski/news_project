@@ -6,11 +6,10 @@ import { Injectable } from "@angular/core";
 //     id: string;
 //     name: string;
 // }
-
 export interface Article {
     source: {
-        id:string,
-        name:string
+        id:string;
+        name:string;
     };
     author: string;
     title: string;
@@ -27,13 +26,34 @@ export interface RootObject {
     articles: Article[];
 }
 
+export interface Source {
+    id: string;
+    name: string;
+    description: string;
+    url: string;
+    category: string;
+    language: string;
+    country: string;
+}
+export interface SourceObject {
+    status: string;
+    sources: Source[];
+}
+
 //I add @Injectable() decorator to inject http service into this service
 @Injectable({providedIn:'root'}) //{providedIn:'root'} is the same as provide this in app.module.ts in providers:[] array
 export class AppService {
     //inject HttpClient service here in the constructor
     constructor(private http:HttpClient) {}
-//I will add this method fetchNews() and in there I will use http.get() request to the api endpoint and return this observable
-    fetchNews() {
-         return this.http.get<RootObject>('https://newsapi.org/v2/everything?q=bitcoin&apiKey=b6854cafe4dc41db988a6f24d62bd5ab');
+//I will add these methods and in there I will use http.get() requests to the api endpoints and return this observables
+    fetchTopHeadlines() {
+        return this.http.get<RootObject>('https://newsapi.org/v2/top-headlines?country=us&apiKey=b6854cafe4dc41db988a6f24d62bd5ab');
     }
+    fetchSources() {
+        return this.http.get<SourceObject>('https://newsapi.org/v2/sources?apiKey=b6854cafe4dc41db988a6f24d62bd5ab');
+    }
+    fetchEverything(page:number) {
+         return this.http.get<RootObject>(`https://newsapi.org/v2/everything?q=bitcoin&page=${page}&pageSize=10&apiKey=b6854cafe4dc41db988a6f24d62bd5ab`);
+    }
+    
 }
