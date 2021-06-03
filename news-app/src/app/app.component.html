@@ -1,26 +1,74 @@
+<div class="search-hero">
+  <input 
+  class="form-control" 
+  type="text" 
+  name="search" 
+  [(ngModel)]="searchText" 
+  autocomplete="off" placeholder="search">
+</div>
 
 <ul *ngIf="topHeadlines">
   <h3>Top Headlines</h3>
-  <li *ngFor="let topHeadline of topHeadlines">
+  <li *ngFor="let topHeadline of topHeadlines | filter:searchText">
     <!--with json pipe | I will transform the object into json string to can see what I have inside the obj-->
-    <p>{{topHeadline | json}}</p>
+    <p>source:{{topHeadline.source.id}}|name:{{topHeadline.source.name}}|
+      author:{{topHeadline.author}}|
+      title:{{topHeadline.title}}|
+      description:{{topHeadline.description}}|
+      url:{{topHeadline.url}}|
+      urlToImage:{{topHeadline.urlToImage}}|
+      publishedAt:{{topHeadline.publishedAt}}|
+      content:{{topHeadline.content}}
+    </p>
   </li>
 </ul>
 <ul *ngIf="sources">
   <h3>Sources</h3>
-  <li *ngFor="let source of sources">
+  <li *ngFor="let source of sources | filter:searchText">
     <!--with json pipe | I will transform the object into json string to can see what I have inside the obj-->
-    <p>{{source | json}}</p>
+    <p>id:{{source.id}}|
+      name:{{source.name}}|
+      description:{{source.description}}|
+      url:{{source.url}}|
+      category:{{source.category}}|
+      language:{{source.language}}|
+      country:{{source.country}}
+    </p>
   </li>
 </ul>
 <ul *ngIf="articles">
   <h3>Everything</h3>
-  <li *ngFor="let article of articles; let i = index;">
+  <li *ngFor="let article of articles | filter:searchText; let i = index;">
     <!--with json pipe | I will transform the object into json string to can see what I have inside the obj-->
-    <p *ngIf="i + 1 === articles.length" #theLastArticle>{{article | json}}</p>
-    <p *ngIf="i + 1 != articles.length">{{article | json}}</p>
+    <p *ngIf="i + 1 === articles.length" #theLastArticle>
+      source:{{article.source.id}}|name:{{article.source.name}}|
+      author:{{article.author}}|
+      title:{{article.title}}|
+      description:{{article.description}}|
+      url:{{article.url}}|
+      urlToImage:{{article.urlToImage}}|
+      publishedAt:{{article.publishedAt}}|
+      content:{{article.content}}</p>
+
+    <p *ngIf="i + 1 != articles.length">
+      source:{{article.source.id}}|name:{{article.source.name}}|
+      author:{{article.author}}|
+      title:{{article.title}}|
+      description:{{article.description}}|
+      url:{{article.url}}|
+      urlToImage:{{article.urlToImage}}|
+      publishedAt:{{article.publishedAt}}|
+      content:{{article.content}}</p>
   </li>
 </ul>
+<ngx-spinner
+  bdColor="rgba(255,255,255,0.7)"
+  size="medium"
+  color="#34a1eb"
+  type="ball-clip-rotate"
+>
+  <!-- <p style="font-size: 20px; color: white">Loading...</p> -->
+</ngx-spinner>
 
 
 

@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 //import { Subscription } from 'rxjs';
 import { AppService, Article, Source } from './app.service';
 
@@ -14,12 +15,13 @@ export class AppComponent implements OnInit, AfterViewInit {
   //page:number;
   totalPages: number = 0;
   currentPage:number = 1;
-
   articles: Article[] = [];
   topHeadlines: Article[] = [];
   sources: Source[] = [];
+  searchText:string = '';
   //inject App Service here in the constructor()
-  constructor(private appService: AppService) { }
+  constructor(private appService: AppService,
+    private spinner: NgxSpinnerService) { }
   ngOnInit() {
     //here in ingOnInit I will subscribe to the Observable from the service to take its value
     this.appService.fetchTopHeadlines().subscribe(
@@ -40,10 +42,12 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    this.spinner.show();
     this.theLastArticle?.changes.subscribe(
       (d) => {
-        console.log(d);
-        if(d.last) this.observer.observe(d.last.nativeElement);
+          this.spinner.hide();
+          console.log(d);
+          if(d.last) this.observer.observe(d.last.nativeElement);
       }
     );
 
@@ -55,7 +59,6 @@ export class AppComponent implements OnInit, AfterViewInit {
       rootMargin: '0px',
       threshold: 0.5
     }
-    
     this.observer = new IntersectionObserver((entries) => {
       if(entries[0].isIntersecting) {
         if(this.currentPage < this.totalPages) {
@@ -68,8 +71,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   getEverything() {
+    this.spinner.show();
     this.appService.fetchEverything(this.currentPage).subscribe(
       data => {
+          this.spinner.hide();
         //this.articles = data["articles"];
         data["articles"].forEach(element => {
           this.articles.push(element);
