@@ -1,0 +1,35 @@
+<!-- <p>all-news works!</p> -->
+<div class="container">
+  <div class="search-hero">
+    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+      placeholder="search">
+  </div>
+  <h3>All News</h3>
+  <div *ngIf="articles">
+    <div *ngFor="let article of articles | filter:searchText; let i = index;">
+      <!--4.add let i=index; in *ngFor and then check if this is the last element, then hold/store this last element in local Reference #theLastArticle-->
+      <div *ngIf="i + 1 === articles.length" #theLastArticle>
+        <!-- source:{{article.source.id}}|name:{{article.source.name}}| -->
+        <h4>{{article.title}}</h4>
+        <h6>{{article.author}}</h6>
+        <p>{{article.description}}</p>
+        <a href="{{article.url}}"></a>
+        <img src="{{article.urlToImage}}" width="25%" alt="urlToImage" class="img-responsive img-fluid">
+        <h6>{{article.publishedAt}}</h6>
+        <p>{{article.content}}</p>
+      </div>
+      <!--4'.check if this is not the last element-->
+      <div *ngIf="i + 1 != articles.length">
+        <h4>{{article.title}}</h4>
+        <h6>{{article.author}}</h6>
+        <p>{{article.description}}</p>
+        <a href="{{article.url}}"></a>
+        <img src="{{article.urlToImage}}" width="25%" alt="urlToImage" class="img-responsive img-fluid">
+        <h6>{{article.publishedAt}}</h6>
+        <p>{{article.content}}</p>
+      </div>
+    </div>
+    <ngx-spinner bdColor="rgba(255,255,255,0.7)" size="medium" color="#34a1eb" type="ball-clip-rotate">
+      <!-- <p style="font-size: 20px; color: white">Loading...</p> -->
+    </ngx-spinner>
+  </div>

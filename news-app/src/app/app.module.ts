@@ -8,10 +8,15 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AllNewsComponent } from './all-news/all-news.component';
+import { BusinessNewsComponent } from './business-news/business-news.component';
+import { NewsApiService } from './service/news-api-service.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AllNewsComponent,
+    BusinessNewsComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     Ng2SearchPipeModule,
     NgxSpinnerModule
   ],
-  providers: [],
+  providers: [NewsApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

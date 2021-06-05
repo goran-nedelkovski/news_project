@@ -1,16 +1,36 @@
-<div class="search-hero">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">News</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLInk="/all-news">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLink="/business-news">Business</a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>
+
+<!-- <div class="search-hero">
   <input 
   class="form-control" 
   type="text" 
   name="search" 
   [(ngModel)]="searchText" 
   autocomplete="off" placeholder="search">
-</div>
-
+</div> -->
+<!-- 
 <ul *ngIf="topHeadlines">
   <h3>Top Headlines</h3>
   <li *ngFor="let topHeadline of topHeadlines | filter:searchText">
-    <!--with json pipe | I will transform the object into json string to can see what I have inside the obj-->
     <p>source:{{topHeadline.source.id}}|name:{{topHeadline.source.name}}|
       author:{{topHeadline.author}}|
       title:{{topHeadline.title}}|
@@ -25,7 +45,6 @@
 <ul *ngIf="sources">
   <h3>Sources</h3>
   <li *ngFor="let source of sources | filter:searchText">
-    <!--with json pipe | I will transform the object into json string to can see what I have inside the obj-->
     <p>id:{{source.id}}|
       name:{{source.name}}|
       description:{{source.description}}|
@@ -35,12 +54,12 @@
       country:{{source.country}}
     </p>
   </li>
-</ul>
-<ul *ngIf="articles">
-  <h3>Everything</h3>
+</ul> -->
+<!-- <ul *ngIf="articles">
+  <h3>All News</h3>
   <li *ngFor="let article of articles | filter:searchText; let i = index;">
-    <!--with json pipe | I will transform the object into json string to can see what I have inside the obj-->
-    <p *ngIf="i + 1 === articles.length" #theLastArticle>
+4.add let i=index; in *ngFor and then check if this is the last element, then hold/store this last element in local Reference #theLastArticle-->
+    <!-- <p *ngIf="i + 1 === articles.length" #theLastArticle>
       source:{{article.source.id}}|name:{{article.source.name}}|
       author:{{article.author}}|
       title:{{article.title}}|
@@ -48,9 +67,9 @@
       url:{{article.url}}|
       urlToImage:{{article.urlToImage}}|
       publishedAt:{{article.publishedAt}}|
-      content:{{article.content}}</p>
-
-    <p *ngIf="i + 1 != articles.length">
+      content:{{article.content}}</p> -->
+<!--4'.check if this is not the last element-->
+    <!-- <p *ngIf="i + 1 != articles.length">
       source:{{article.source.id}}|name:{{article.source.name}}|
       author:{{article.author}}|
       title:{{article.title}}|
@@ -66,9 +85,9 @@
   size="medium"
   color="#34a1eb"
   type="ball-clip-rotate"
->
+> -->
   <!-- <p style="font-size: 20px; color: white">Loading...</p> -->
-</ngx-spinner>
+<!-- </ngx-spinner>  -->
 
 
 
