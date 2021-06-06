@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 // //6.implement AfterViwInit interface
 export class AppComponent {
+  searchText: string = '';
 // //   //5.then I can get/select that local Reference with @ViewChildren('local Reference') and store in theLastArticle property which is of type QueryList<ElementRef>.I will print this last Element on ngAfterOnInit.
 // //   @ViewChildren('theLastArticle', { read: ElementRef })
 // //   theLastArticle: QueryList<ElementRef> | undefined;

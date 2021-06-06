@@ -11,12 +11,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AllNewsComponent } from './all-news/all-news.component';
 import { BusinessNewsComponent } from './business-news/business-news.component';
 import { NewsApiService } from './service/news-api-service.service';
+import { EntertainmentNewsComponent } from './entertainment-news/entertainment-news.component';
+import { GeneralNewsComponent } from './general-news/general-news.component';
+import { HealthNewsComponent } from './health-news/health-news.component';
+import { ScienceNewsComponent } from './science-news/science-news.component';
+import { SportsNewsComponent } from './sports-news/sports-news.component';
+import { TechnologyNewsComponent } from './technology-news/technology-news.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AllNewsComponent,
-    BusinessNewsComponent
+    BusinessNewsComponent,
+    EntertainmentNewsComponent,
+    GeneralNewsComponent,
+    HealthNewsComponent,
+    ScienceNewsComponent,
+    SportsNewsComponent,
+    TechnologyNewsComponent
   ],
   imports: [
     BrowserModule,

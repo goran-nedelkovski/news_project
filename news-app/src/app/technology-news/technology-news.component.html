@@ -1,9 +1,9 @@
 <!-- <p>all-news works!</p> -->
 <div class="container">
-  <div class="search-hero">
-    <input class="form-control" type="search" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="search">
-  </div>
-  <h2>All News</h2> 
+    <div class="search-hero">
+      <input class="form-control" type="search" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="search">
+    </div>
+  <h2>Technology News</h2>
   <hr>
   <div *ngIf="articles" class="row">
     <div *ngFor="let article of articles | filter:searchText; let i = index;" class="col-md-4">
@@ -21,7 +21,7 @@
       <!--4'.check if this is not the last element-->
       <div *ngIf="i + 1 != articles.length">
         <h4>{{article.title}}</h4>
-        author:<h6>{{article.author}}</h6>
+        <h6>{{article.author}}</h6>
         <p>{{article.description}}</p>
         <img src="{{article.urlToImage}}" width="100%" alt="Image" class="img-fluid">
         <h6>{{article.publishedAt}}</h6>
@@ -34,3 +34,5 @@
     <!-- <p style="font-size: 20px; color: white">Loading...</p> -->
   </ngx-spinner>
 </div>
+
+

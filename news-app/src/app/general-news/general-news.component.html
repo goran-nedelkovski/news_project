@@ -3,7 +3,7 @@
   <div class="search-hero">
     <input class="form-control" type="search" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="search">
   </div>
-    <h2>Business News</h2>
+    <h2>General News</h2>
     <hr>
     <div *ngIf="articles">
       <div *ngFor="let article of articles | filter:searchText; let i = index;" class="col-md-4">
@@ -34,3 +34,5 @@
       <!-- <p style="font-size: 20px; color: white">Loading...</p> -->
     </ngx-spinner>
 </div>
+
+

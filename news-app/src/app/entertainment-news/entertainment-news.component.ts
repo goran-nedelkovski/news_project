@@ -5,11 +5,11 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Article, NewsApiService } from '../service/news-api-service.service';
 
 @Component({
-  selector: 'app-business-news',
-  templateUrl: './business-news.component.html',
-  styleUrls: ['./business-news.component.css']
+  selector: 'app-entertainment-news',
+  templateUrl: './entertainment-news.component.html',
+  styleUrls: ['./entertainment-news.component.css']
 })
-export class BusinessNewsComponent implements OnInit, AfterViewInit {
+export class EntertainmentNewsComponent implements OnInit, AfterViewInit {
   @ViewChildren('theLastArticle', { read: ElementRef })
   theLastArticle: QueryList<ElementRef> | undefined;
   observer:any;
@@ -24,7 +24,7 @@ export class BusinessNewsComponent implements OnInit, AfterViewInit {
     private spinner: NgxSpinnerService) { }
   ngOnInit() {
     //when the page/component is load in ngOnInit, we want to call getEverythinf() and call intersectionObserver() to check the intersectionObserver
-    this.getBusinessNews();
+    this.getEntertainmentNews();
     this.intersectionObserver();
     //here in ingOnInit I will subscribe to the Observable from the service to take its value
     // this.appService.fetchTopHeadlines().subscribe(
@@ -78,17 +78,17 @@ export class BusinessNewsComponent implements OnInit, AfterViewInit {
       //9.here check if our currentPage(which is 0 at start) < totalPages, then increment the currentPages plus one and call getEverything() here
       if(this.currentPage < this.totalPages) {
           this.currentPage++; //increment the current page + 1
-          this.getBusinessNews(); //call this method again here
+          this.getEntertainmentNews(); //call this method again here
         }
       }
     }, options);
   }
   
-  getBusinessNews() {
+  getEntertainmentNews() {
   //11.in the end, I can install ngx-spinner and inject the spinner Service in the constructor.And then, when the page is load, then show the spinner
     this.spinner.show();
     //3.make this getEverything() method which will subscribe() to fetchEveryThing(currentPage) Observable of the Service, to can get that amount of data.then call this method in ngOnInit()
-    this.service.fetchBusinessNews(this.currentPage).subscribe(
+    this.service.fetchEntertainmentNews(this.currentPage).subscribe(
       data => {
           this.spinner.hide(); //when we get/receive the data,then hide the spinner
       //3'when we have/got the data, then access to 'article' property and store that array in this.article property
@@ -102,4 +102,4 @@ export class BusinessNewsComponent implements OnInit, AfterViewInit {
       }
     );
   }
-  }
+}

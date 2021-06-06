@@ -3,9 +3,9 @@
   <div class="search-hero">
     <input class="form-control" type="search" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="search">
   </div>
-    <h2>Business News</h2>
+    <h2>Entertainment News</h2>
     <hr>
-    <div *ngIf="articles">
+    <div *ngIf="articles" class="row">
       <div *ngFor="let article of articles | filter:searchText; let i = index;" class="col-md-4">
         <!--4.add let i=index; in *ngFor and then check if this is the last element, then hold/store this last element in local Reference #theLastArticle-->
         <div *ngIf="i + 1 === articles.length" #theLastArticle>
@@ -28,9 +28,12 @@
           <p>{{article.content}}</p>
           <a href="{{article.url}}">Read more</a>
         </div>
-      </div>
+      </div> 
     </div>
     <ngx-spinner bdColor="rgba(255,255,255,0.7)" size="medium" color="#34a1eb" type="ball-clip-rotate">
       <!-- <p style="font-size: 20px; color: white">Loading...</p> -->
     </ngx-spinner>
 </div>
+
+
+
